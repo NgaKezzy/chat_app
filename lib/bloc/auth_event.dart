@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:chat_app/models/user.dart';
 import 'package:equatable/equatable.dart';
 
 class AuthEvent extends Equatable {
@@ -21,20 +22,9 @@ class CheckLogin extends AuthEvent {
 class LogOut extends AuthEvent {}
 
 class Register extends AuthEvent {
-  final String newFirstName;
-  final String newLastName;
-  final String newUserName;
-  final String newEmail;
-  final int newContactNumber;
-  final String newPassword;
-  final String newConfirmPassword;
+  final User newUser;
 
   const Register(
-      {this.newFirstName = '',
-      this.newLastName = '',
-      this.newUserName = '',
-      this.newEmail = '',
-      this.newContactNumber = 0,
-      this.newPassword = '',
-      this.newConfirmPassword = ''});
+      {this.newUser =
+          const User(firstName: '', lastName: '', password: '', userName: '')});
 }

@@ -1,4 +1,3 @@
-
 import 'package:chat_app/bloc/auth_event.dart';
 import 'package:chat_app/bloc/auth_state.dart';
 import 'package:chat_app/config/print_color.dart';
@@ -11,8 +10,6 @@ List<User> users = [
   const User(
       userName: 'ngakezzy',
       password: '11111',
-      contactNumber: 0123456789,
-      email: 'ngakezzy@gmail.com',
       firstName: 'Ngà',
       lastName: 'Nguyễn')
 ];
@@ -57,34 +54,14 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
   void _register(Register event, Emitter emit) {
     bool isRegister = true;
 
-    if (event.newPassword == event.newConfirmPassword) {
-      // kiểm tra mật khẩu và xác nhận mk có trùng nhau ko
+    // kiểm tra mật khẩu và xác nhận mk có trùng nhau ko
 
-      for (var element in users) {
-        if (event.newPassword == element.userName) {
-          // kiểm tra xem tài username đã tồn tịa trong uses chưa
-          isRegister = false;
-          Fluttertoast.showToast(
-              msg: "Tài khoản đã tồn tại !",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Colors.blue,
-              textColor: Colors.white,
-              fontSize: 14.0);
-        }
-      }
-      if (isRegister) {
-        users.add(User(
-          firstName: event.newUserName,
-          lastName: event.newLastName,
-          email: event.newEmail,
-          contactNumber: event.newContactNumber,
-          userName: event.newUserName,
-          password: event.newPassword,
-        ));
+    for (var element in users) {
+      if (event.newUser.userName == element.userName) {
+        // kiểm tra xem tài username đã tồn tịa trong uses chưa
+        isRegister = false;
         Fluttertoast.showToast(
-            msg: "Đăng ký thành công!",
+            msg: "Tài khoản đã tồn tại !",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 1,
@@ -92,13 +69,15 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
             textColor: Colors.white,
             fontSize: 14.0);
       }
-    } else {
+    }
+    if (isRegister) {
+      users.add(event.newUser);
       Fluttertoast.showToast(
-          msg: "Mật khẩu không trùng nhau!",
+          msg: "Đăng ký thành công!",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.blue,
           textColor: Colors.white,
           fontSize: 14.0);
     }

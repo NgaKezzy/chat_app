@@ -1,3 +1,4 @@
+import 'package:chat_app/widgets/drawer_app.dart';
 import 'package:flutter/material.dart';
 
 class HomeApp extends StatefulWidget {
@@ -10,6 +11,19 @@ class HomeApp extends StatefulWidget {
 class _HomeAppState extends State<HomeApp> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      drawer: Drawer(
+        child: DrawerApp(),
+      ),
+      appBar: AppBar(title: Text('Home')),
+      body: Column(
+        children: [
+          Divider(
+            color: Colors.red,
+            thickness: 5,
+          )
+        ],
+      ),
+    );
   }
 }

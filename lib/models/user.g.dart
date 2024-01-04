@@ -11,10 +11,6 @@ abstract class _$UserCWProxy {
 
   User password(String password);
 
-  User email(String email);
-
-  User contactNumber(int contactNumber);
-
   User firstName(String firstName);
 
   User lastName(String lastName);
@@ -28,8 +24,6 @@ abstract class _$UserCWProxy {
   User call({
     String? userName,
     String? password,
-    String? email,
-    int? contactNumber,
     String? firstName,
     String? lastName,
   });
@@ -48,12 +42,6 @@ class _$UserCWProxyImpl implements _$UserCWProxy {
   User password(String password) => this(password: password);
 
   @override
-  User email(String email) => this(email: email);
-
-  @override
-  User contactNumber(int contactNumber) => this(contactNumber: contactNumber);
-
-  @override
   User firstName(String firstName) => this(firstName: firstName);
 
   @override
@@ -70,8 +58,6 @@ class _$UserCWProxyImpl implements _$UserCWProxy {
   User call({
     Object? userName = const $CopyWithPlaceholder(),
     Object? password = const $CopyWithPlaceholder(),
-    Object? email = const $CopyWithPlaceholder(),
-    Object? contactNumber = const $CopyWithPlaceholder(),
     Object? firstName = const $CopyWithPlaceholder(),
     Object? lastName = const $CopyWithPlaceholder(),
   }) {
@@ -84,15 +70,6 @@ class _$UserCWProxyImpl implements _$UserCWProxy {
           ? _value.password
           // ignore: cast_nullable_to_non_nullable
           : password as String,
-      email: email == const $CopyWithPlaceholder() || email == null
-          ? _value.email
-          // ignore: cast_nullable_to_non_nullable
-          : email as String,
-      contactNumber:
-          contactNumber == const $CopyWithPlaceholder() || contactNumber == null
-              ? _value.contactNumber
-              // ignore: cast_nullable_to_non_nullable
-              : contactNumber as int,
       firstName: firstName == const $CopyWithPlaceholder() || firstName == null
           ? _value.firstName
           // ignore: cast_nullable_to_non_nullable
@@ -118,8 +95,6 @@ extension $UserCopyWith on User {
 User _$UserFromJson(Map<String, dynamic> json) => User(
       userName: json['userName'] as String? ?? '',
       password: json['password'] as String? ?? '',
-      email: json['email'] as String? ?? '',
-      contactNumber: json['contactNumber'] as int? ?? 0,
       firstName: json['firstName'] as String? ?? '',
       lastName: json['lastName'] as String? ?? '',
     );
@@ -129,6 +104,4 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'password': instance.password,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
-      'email': instance.email,
-      'contactNumber': instance.contactNumber,
     };

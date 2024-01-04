@@ -33,10 +33,11 @@ class _InputLoginState extends State<InputLogin> {
           widget.title,
           style: const TextStyle(
               color: AppColors.grey_868686,
-              fontSize: AppSize.size15,
+              fontSize: AppSize.size13,
               fontWeight: FontWeight.w500),
         ),
         TextFormField(
+          cursorHeight: 20,
           keyboardType: widget.inputType,
           validator: _checkValidatorPassword,
           controller: widget.controller,

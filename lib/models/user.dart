@@ -11,20 +11,16 @@ class User extends Equatable {
   final String password;
   final String firstName;
   final String lastName;
-  final String email;
-  final int contactNumber;
 
   const User(
       {this.userName = '',
       this.password = '',
-      this.email = '',
-      this.contactNumber = 0,
       this.firstName = '',
       this.lastName = ''});
 
   @override
   List<Object?> get props =>
-      [userName, password, email, contactNumber, firstName, lastName];
+      [userName, password, firstName, lastName];
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
