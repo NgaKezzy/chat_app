@@ -1,15 +1,13 @@
+import 'package:chat_app/bloc/auth_bloc.dart';
+import 'package:chat_app/bloc/auth_state.dart';
+import 'package:chat_app/home_app.dart';
+import 'package:chat_app/pages/splash_intro/splash_logo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:lean_code_app/bloc/auth_bloc.dart';
-import 'package:lean_code_app/bloc/auth_state.dart';
-import 'package:lean_code_app/bloc/course_bloc.dart';
-import 'package:lean_code_app/pages/home_app.dart';
-import 'package:lean_code_app/pages/splash_intro/splash_logo.dart';
 import 'package:path_provider/path_provider.dart';
-
 Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -35,15 +33,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthBloc(),
         ),
-        BlocProvider(
-          create: (context) => CourseBloc(),
-        ),
+     
       ],
       child: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: state.isLogin ? HomeApp() : const SplashScreen(),
+            home: state.isLogin ? const HomeApp() : const SplashScreen(),
           );
         },
       ),
